@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #6A0DAD;
+  --color-secondary: #1E90FF;
+  --font-inter: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[#0B0B2B] text-white font-inter min-h-screen overflow-x-hidden;
+    background: linear-gradient(135deg, #0B0B2B, #1A0F3C);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-xl;
+  }
+  
+  .glass-dark {
+    @apply backdrop-blur-xl bg-black/30 border border-white/10 rounded-2xl shadow-2xl;
+  }
+
+  .primary-glow {
+    @apply bg-primary hover:bg-primary/80 text-white font-medium px-6 py-2 rounded-xl transition-all shadow-[0_0_15px_rgba(106,13,173,0.5)] hover:shadow-[0_0_25px_rgba(106,13,173,0.8)];
+  }
+}
