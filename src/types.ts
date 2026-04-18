@@ -20,6 +20,14 @@ export interface Proof {
   link: string;
   category: ProofCategory;
   timestamp: number;
+  pinned?: boolean;
 }
 
-export type Screen = 'Profile' | 'Add Proof' | 'Timeline' | 'Public';
+export interface Milestone {
+  id: string;
+  title: string;
+  description: string;
+  timestamp: number;
+}
+
+export type Screen = 'Profile' | 'Proof' | 'Timeline' | 'Public';

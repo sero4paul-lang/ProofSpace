@@ -9,14 +9,18 @@
 @layer base {
   body {
     @apply bg-[#0B0B2B] text-white font-inter min-h-screen overflow-x-hidden;
-    background: linear-gradient(135deg, #0B0B2B, #1A0F3C);
+    background: radial-gradient(circle at top, #1A0F3C, #0B0B2B);
     background-attachment: fixed;
   }
 }
 
 @layer components {
   .glass {
-    @apply backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-xl;
+    @apply backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-xl transition-all duration-300;
+  }
+  
+  .glass:hover {
+    @apply -translate-y-1 shadow-2xl shadow-primary/10 border-white/30;
   }
   
   .glass-dark {
@@ -24,6 +28,11 @@
   }
 
   .primary-glow {
-    @apply bg-primary hover:bg-primary/80 text-white font-medium px-6 py-2 rounded-xl transition-all shadow-[0_0_15px_rgba(106,13,173,0.5)] hover:shadow-[0_0_25px_rgba(106,13,173,0.8)];
+    @apply text-white font-bold px-6 py-2 rounded-full transition-all shadow-[0_0_15px_rgba(106,13,173,0.3)] hover:scale-105 active:scale-95 flex items-center justify-center gap-2;
+    background: linear-gradient(90deg, #6A0DAD, #1E90FF);
+  }
+
+  .secondary-btn {
+    @apply bg-white text-black font-semibold px-4 py-2 rounded-full transition-all hover:bg-zinc-200 active:scale-95 flex items-center justify-center gap-2;
   }
 }
