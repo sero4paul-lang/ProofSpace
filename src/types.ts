@@ -11,6 +11,8 @@ export interface Profile {
   username: string;
   bio: string;
   focus: FocusArea;
+  walletAddress?: string;
+  isPro?: boolean;
 }
 
 export interface Proof {

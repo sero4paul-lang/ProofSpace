@@ -7,7 +7,7 @@ interface LandingProps {
 
 export default function Landing({ onEnter }: LandingProps) {
   return (
-    <div className="min-h-[70vh] flex items-center justify-center p-6 bg-transparent">
+    <div className="min-h-[70vh] flex items-center justify-center bg-transparent hero pt-[40px] px-[20px] pb-[20px]">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -26,7 +26,12 @@ export default function Landing({ onEnter }: LandingProps) {
           Document your journey. Prove your growth.
         </p>
         <button 
-          onClick={onEnter}
+          onClick={() => {
+            if (typeof (window as any).plausible === 'function') {
+              (window as any).plausible('Start App');
+            }
+            onEnter();
+          }}
           className="primary-glow px-12 py-4 text-xl tracking-widest uppercase italic shadow-2xl shadow-primary/20"
         >
           Get Started

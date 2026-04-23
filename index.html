@@ -4,7 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ProofSpace</title>
-    <script defer data-domain="https://ais-pre-rlw3z43sqriqzpcwxsdnlj-478186802263.europe-west2.run.app" src="https://analytics.vgdh.io/js/script.tagged-events.outbound-links.file-downloads.hash.pageview-props.revenue.js"></script>
+    <script>
+      // Early polyfills and protection for Web3 environments
+      (function() {
+        window.global = window;
+        window.process = { env: {} };
+        
+        var _originalFetch = window.fetch;
+        try {
+          Object.defineProperty(window, 'fetch', {
+            configurable: true,
+            enumerable: true,
+            get: function() { return _originalFetch; },
+            set: function(v) { 
+              console.warn('Blocked assignment to window.fetch. This usually happens when a library tries to polyfill fetch globally.');
+            }
+          });
+        } catch (e) {
+          console.warn('window.fetch is non-configurable. Assignments will still crash if configurable is false.');
+        }
+      })();
+    </script>
+    <script>
+      (function() {
+        var domain = "ais-pre-rlw3z43sqriqzpcwxsdnlj-478186802263.europe-west2.run.app";
+        // If we are on a run.app domain, use the current hostname to ensure counting works in all environments
+        if (window.location.hostname.indexOf('run.app') !== -1) {
+          domain = window.location.hostname;
+        }
+        var s = document.createElement('script');
+        s.setAttribute('defer', '');
+        s.setAttribute('data-domain', domain);
+        s.setAttribute('src', 'https://analytics.vgdh.io/js/script.manual.tagged-events.outbound-links.file-downloads.hash.pageview-props.revenue.js');
+        document.head.appendChild(s);
+      })();
+      window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">

@@ -47,13 +47,13 @@ export default function PublicPortfolio({ profile, proofs, milestones }: PublicP
         </Link>
 
         {/* Public Header */}
-        <header className="mb-20">
+        <header className="mb-20 hero text-center pt-[40px] px-[20px] pb-[20px]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col md:flex-row md:items-end justify-between gap-8"
+            className="flex flex-col items-center justify-center gap-8"
           >
-            <div className="space-y-6">
+            <div className="space-y-6 flex flex-col items-center">
               <div className="flex items-center gap-6">
                 <img 
                   src="https://lh3.googleusercontent.com/d/16A9AFdJNQTZEIqoK0nYs8yKCVfcPvcIj" 
@@ -67,15 +67,31 @@ export default function PublicPortfolio({ profile, proofs, milestones }: PublicP
                   </div>
                 </div>
                 <div>
-                  <h1 className="text-4xl md:text-6xl font-black tracking-tighter italic">{profile.name || 'Anonymous Builder'}</h1>
-                  <p className="text-secondary font-mono text-xl uppercase tracking-tighter">@{profile.username || 'username'}</p>
+                  <h1 className="text-4xl md:text-6xl font-black tracking-tighter italic flex items-center justify-center gap-3 flex-wrap">
+                    {profile.name || 'Anonymous Builder'}
+                    {profile.isPro && (
+                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-amber-500 text-xs font-black uppercase text-black italic animate-pulse shadow-lg shadow-amber-500/20">
+                        <Star className="w-3 h-3 fill-black" /> Pro
+                      </span>
+                    )}
+                  </h1>
+                  <p className="text-secondary font-mono text-xl uppercase tracking-tighter text-center">@{profile.username || 'username'}</p>
+                  {profile.walletAddress && (
+                    <div className="flex justify-center mt-1">
+                      <p className="text-[10px] font-mono text-white/30 truncate max-w-[200px] bg-white/5 px-2 py-1 rounded inline-block">
+                        {profile.walletAddress}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
-              <p className="text-xl text-white/60 max-w-2xl font-medium leading-relaxed italic">
+              <p className="text-xl text-white/60 max-w-2xl font-medium leading-relaxed italic text-center">
                 "{profile.bio || 'Building the future of the decentralized web.'}"
               </p>
-              <div className="inline-block bg-primary/10 border border-primary/30 px-4 py-1.5 rounded-full text-primary font-black text-[10px] uppercase tracking-widest">
-                Focus: {profile.focus}
+              <div className="flex justify-center">
+                <div className="inline-block bg-primary/10 border border-primary/30 px-4 py-1.5 rounded-full text-primary font-black text-[10px] uppercase tracking-widest">
+                  Focus: {profile.focus}
+                </div>
               </div>
             </div>
 
